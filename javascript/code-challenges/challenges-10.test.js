@@ -10,6 +10,7 @@ characters from that string as elements of an array.
 
 function returnTen(str){
   // Solution code here...
+  return str.split('').slice(-10)
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -28,6 +29,7 @@ return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
   // Solution code here...
+  return Math.max(...matrix.flat())
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,6 +48,15 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
+  let sum = 0;
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      sum =sum + matrix[i][j]
+      
+    }
+  }
+  return sum
 };
 
 
@@ -73,6 +84,16 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
+  let arr2 = []
+  for (let i = 0; i < stores[1].length; i++) {
+    let sum = 0;
+    for (let j = 0; j < stores.length; j++) {
+      sum = sum +stores[j][i]
+      
+    }
+    arr2.push(sum)
+  }
+  return arr2
 
 };
 
@@ -88,6 +109,15 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 
 const salesData = (hours, data) => {
   // Solution code here...
+  let arr2 = [];
+  for (let i = 0; i < hours.length; i++) {
+    arr2.push({
+      sales:`${data[i]} cookies`,
+      time : `${hours[i]}`
+    })
+    
+  }
+  return arr2
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -113,6 +143,17 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  let value = 0 
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].items.length; j++) {
+      if (arr[i].items[j].name === 'Treats'){
+        value =value + arr[i].items[j].quantity
+      }
+      
+    }
+    
+  }
+  return value
 };
 
 /* ------------------------------------------------------------------------------------------------
