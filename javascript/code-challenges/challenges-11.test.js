@@ -20,6 +20,11 @@ Becomes:
 
 function transformToLis(obj){
   // Solution code here...
+  let arr2 =[]
+  for(let property in obj ){
+    arr2.push(`<li>${property}: ${obj[property]}</li>`)
+  }
+  return arr2;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,6 +39,19 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
+  let total = 0 ;
+  input.map(item =>{
+    return item.filter(num =>{
+   if (num === target){
+    total ++
+   }
+
+
+    })
+  })
+return total;
+  
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -48,6 +66,11 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  let total =0 
+  input.forEach(element => {
+    Array.isArray(element) ? total += totalSum(element): total += element;
+  })
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -64,6 +87,11 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+ let arr2 =[]
+ arr2 =input.map(
+   item => item.filter(item2 =>(typeof item2 === 'number'&& item2 % 5 === 0))
+ )
+ return arr2.map(res1 => res1.map(res2=>Math.pow(2,res2)))
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -130,16 +158,26 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  let filter =data.filter(item =>{
+    return item.gender == 'male' || item.gender === 'female'
+  }).map(item =>{
+    return item.name
+  }).join(' and ')
+  return filter
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the character who is the shortest in height.
+Write a function named findShortest that, given the Star Wars data from Challenge 6, 
+uses any combination of filter, map and reduce to return the name of the character who is the shortest in height.
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
   // Solution code here...
+
+  let shortest =data.reduce((val1 , val2)=> (Number(val1.height)<Number(val2.height)) ?val1:val2)
+  return shortest.name
 };
 
 /* ------------------------------------------------------------------------------------------------
